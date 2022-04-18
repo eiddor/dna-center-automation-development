@@ -18,24 +18,32 @@ building_info:
 
 floor_info:
   - name: SF-1-1
+    area: Bay Area
+    building: San_Francisco-1
     number: 1
     rf_model: Cubes And Walled Offices
     width: 100
     length: 50
     height: 10
   - name: SF-1-2
+    area: Bay Area
+    building: San_Francisco-1
     number: 1
     rf_model: Cubes And Walled Offices
     width: 100
     length: 50
     height: 10
   - name: SJC-13-1
+    area: Bay Area
+    building: San_Jose-1
     number: 1
     rf_model: Cubes And Walled Offices
     width: 100
     length: 50
     height: 10
   - name: SJC-13-2
+    area: Bay Area
+    building: San_Jose-1
     number: 1
     rf_model: Cubes And Walled Offices
     width: 100

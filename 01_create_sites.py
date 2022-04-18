@@ -161,6 +161,27 @@ def main():
                 print(response.text)
                 time_sleep(10)
 
+# iterate through the list of buildings and create them using the information in site_info.yaml
+    for name in project_data['floor_info']:
+                # create a new building
+                # create a new floor
+                print('\n\nCreating a new floor:', name['name'])
+                floor_payload = {
+                    'type': 'floor',
+                    'site': {
+                        'floor': {
+                            'name': name['name'],
+                            'parentName': 'Global/' + name['area'] + '/' + name['building'],
+                            'height': name['height'],
+                            'length': name['length'],
+                            'width': name['width'],
+                            'rfModel': name['rf_model']
+                        }
+                    }
+                }
+                response = dnac_api.sites.create_site(payload=floor_payload)
+                time_sleep(10)
+
 
 if __name__ == '__main__':
     sys.exit(main())
