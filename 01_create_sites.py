@@ -132,8 +132,8 @@ def main():
                     "type": "area",
                     "site": {
                         "area": {
-                            "name": name[name],
-                            "parentName": name[hierarchy]
+                            "name": name['name'],
+                            "parentName": name['hierarchy']
                         }
                     }
                 }
