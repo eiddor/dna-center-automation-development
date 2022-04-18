@@ -6,13 +6,15 @@ area_info:
 
 building_info:
   - name: San_Francisco-1
+    area: Bay Area
     address: 500 Terry a. François Boulevard, San Francisco, California 94158, United States
-    lat: 45.532297
-    long: -122.881111
+    lat: 36.77047
+    long: -122.38708
   - name: San_Jose-1
+    area: Bay Area
     address: 3675 Cisco Way, San Jose, California 95134, United States
-    lat: 45.532297
-    long: -122.881111
+    lat: 37.40954
+    long: -121.92871
 
 floor_info:
   - name: SF-1-1

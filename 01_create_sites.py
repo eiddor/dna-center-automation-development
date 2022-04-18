@@ -124,10 +124,10 @@ def main():
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
 
-# iterate through the list of groups and create them using the information in credentials.yaml
+# iterate through the list of areas and create them using the information in site_info.yaml
     for name in project_data['area_info']:
                 # create a new area
-                print('\nCreating a new area:', name)
+                print('\nCreating a new area:', name['name'])
                 area_payload = {
                     "type": "area",
                     "site": {
@@ -139,6 +139,28 @@ def main():
                 }
                 response = dnac_api.sites.create_site(payload=area_payload)
                 time_sleep(10)
+
+
+# iterate through the list of buildings and create them using the information in site_info.yaml
+    for name in project_data['building_info']:
+                # create a new building
+                print('\n\nCreating a new building:', name['name'])
+                building_payload = {
+                    'type': 'building',
+                    'site': {
+                        'building': {
+                            'name': name['name'],
+                            'parentName': 'Global/' + name['area'],
+                            'address': name['address'],
+                            'latitude': name['lat'],
+                            'longitude': name['long']
+                        }
+                    }
+                }
+                response = dnac_api.sites.create_site(payload=building_payload)
+                print(response.text)
+                time_sleep(10)
+
 
 if __name__ == '__main__':
     sys.exit(main())
