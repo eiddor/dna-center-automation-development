@@ -1,0 +1,41 @@
+area_info:
+  - name: Bay Area
+    hierarchy: Global
+  - name: RTP
+    hierarchy: Global
+
+building_info:
+  - name: San_Francisco-1
+    address: 500 Terry a. François Boulevard, San Francisco, California 94158, United States
+    lat: 45.532297
+    long: -122.881111
+  - name: San_Jose-1
+    address: 3675 Cisco Way, San Jose, California 95134, United States
+    lat: 45.532297
+    long: -122.881111
+
+floor_info:
+  - name: SF-1-1
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SF-1-2
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SJC-13-1
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SJC-13-2
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
