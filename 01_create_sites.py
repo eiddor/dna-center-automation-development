@@ -124,9 +124,6 @@ def main():
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
 
-    area_name = project_data['area_info']['name']
-    area_hierarchy = project_data['area_info']['hierarchy']
-
 # iterate through the list of groups and create them using the information in credentials.yaml
     for name in project_data['area_info']:
                 # create a new area
