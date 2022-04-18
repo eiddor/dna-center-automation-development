@@ -119,7 +119,7 @@ def main():
     pprint(project_data)
 
     # Create a DNACenterAPI "Connection Object"
-    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.3.3.0', verify=False)
+    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.2.3.3', verify=False)
 
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
