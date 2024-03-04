@@ -49,3 +49,14 @@ floor_info:
     width: 100
     length: 50
     height: 10
+
+
+network_settings:
+  domain_name: selfserve.lab
+  dns_server1: 100.64.0.53
+  dns_server2: 208.67.222.222
+  dhcp_server1: 100.127.0.1
+  dhcp_server2: 100.64.0.100
+  ntp_server: 100.127.0.1
+  syslog_server: 100.64.0.101
+  aaa_server: 100.64.0.100

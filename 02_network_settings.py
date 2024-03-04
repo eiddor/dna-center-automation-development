@@ -108,23 +108,47 @@ def main():
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
 
+    dhcp_server1 = project_data['network_settings']['dhcp_server1']
+    dhcp_server2 = project_data['network_settings']['dhcp_server2']
+    domain_name = project_data['network_settings']['domain_name']
+    dns_server1 = project_data['network_settings']['dns_server1']
+    dns_server2 = project_data['network_settings']['dns_server2']
+    syslog_server = project_data['network_settings']['syslog_server']
+    ntp_server = project_data['network_settings']['ntp_server']
+    aaa_server = project_data['network_settings']['aaa_server']
+
+
     # create site network settings
     network_settings_payload = {
         'settings': {
             'dhcpServer': [
-                dhcp_server
+                dhcp_server1, dhcp_server2
             ],
             'dnsServer': {
-                'domainName': '',
-                'primaryIpAddress': dns_server,
+                'domainName': domain_name,
+                'primaryIpAddress': dns_server1,
+                'secondaryIpAddress': dns_server2,
             },
-            'syslogServer': {
+            "network_aaa": {
+                "servers": "Server type supported by ISE and AAA",
+                "ipAddress": aaa_server,
+                "network": aaa_server,
+                "protocol": "RADIUS",
+                "servers": "ISE"
+            },
+            "clientAndEndpoint_aaa": {
+                "ipAddress": aaa_server,
+                "network": aaa_server,
+                "protocol": "RADIUS",
+                "servers": "ISE"
+        },
+            "syslogServer": {
                 'ipAddresses': [
                     syslog_server
                 ],
                 'configureDnacIP': True
             },
-            'ntpServer': [
+            "ntpServer": [
                 ntp_server
             ]
         }

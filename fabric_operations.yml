@@ -1,27 +1,59 @@
 area_info:
-  name: OR
+  name: Bay Area
   hierarchy: Global
 
 building_info:
-  name: BEAV
-  address: 1600 Northeast Compton Drive, Beaverton, Oregon 97006, United States
-  lat: 45.532297
-  long: -122.881111
+  - name: San_Francisco-1
+    area: Bay Area
+    address: 500 Terry a. François Boulevard, San Francisco, California 94158, United States
+    lat: 37.770515
+    long: -122.387971
+  - name: San_Jose-13
+    address: 3675 Cisco Way, San Jose, California, 95134, United States
+    lat: 37.40942
+    long: -121.92887
 
 floor_info:
-  name: Main
-  number: 1
-  rf_model: Cubes And Walled Offices
-  width: 100
-  length: 50
-  height: 10
+  - name: SF-1-1
+    area: Bay Area
+    building: San_Francisco-1
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SF-1-2
+    area: Bay Area
+    building: San_Francisco-1
+    number: 2
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SJC-13-1
+    area: Bay Area
+    building: San_Jose-13
+    number: 1
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+  - name: SJC-13-2
+    area: Bay Area
+    building: San_Jose-13
+    number: 2
+    rf_model: Cubes And Walled Offices
+    width: 100
+    length: 50
+    height: 10
+
 
 network_settings:
-  dns_server: 171.70.168.183
-  dhcp_server: 10.93.141.1
-  ntp_server: 171.68.38.66
-  syslog_server: 10.93.141.37
-  aaa_server: 10.93.141.38
+  dns_server: 100.64.0.53
+  dhcp_server: 100.127.0.1
+  ntp_server: 100.127.0.1
+  syslog_server: 100.64.0.101
+  aaa_server: 100.64.0.100
 
 devices_info:
   device_ips: [10.93.141.20, 10.93.141.28, 10.93.141.19]
