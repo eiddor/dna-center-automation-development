@@ -119,7 +119,7 @@ def main():
     
     # We only care about global right now
 
-    site_hierarchy = 'Global/'
+    site_hierarchy = 'Global'
 
 
     # create site network settings

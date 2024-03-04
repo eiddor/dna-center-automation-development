@@ -50,7 +50,6 @@ floor_info:
     length: 50
     height: 10
 
-
 network_settings:
   domain_name: selfserve.lab
   dns_server1: 100.64.0.53
@@ -60,3 +59,28 @@ network_settings:
   ntp_server: 100.127.0.1
   syslog_server: 100.64.0.101
   aaa_server: 100.64.0.100
+
+ip_pool:
+  name: Global-Pool
+  type: Generic
+  subnet: 10.0.0.0/8
+  address_family: IPv4
+
+
+
+ip_sub_pool:
+  name: BEAV_Fabric_Subpool
+  type: Generic
+  subnet: 10.200.1.0/24
+  gateway: 10.200.1.1
+  dhcp_server: 10.93.141.46
+  dns_server: 10.93.141.46
+  address_family: IPv4
+
+ip_transit_pool:
+  name: BEAV_Transit_Pool
+  type: Generic
+  subnet: 10.200.2.0/24
+  gateway: 10.200.2.1
+  dhcp_server: 10.93.141.46
+  address_family: IPv4
