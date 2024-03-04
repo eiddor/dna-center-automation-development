@@ -114,14 +114,6 @@ def main():
     ip_pool_cidr = project_data['ip_pool']['subnet']
     ip_pool_address_space = project_data['ip_pool']['address_family']
 
-    ip_sub_pool_name = project_data['ip_sub_pool']['name']
-    ip_sub_pool_type = project_data['ip_sub_pool']['type']
-    ip_sub_pool_cidr = project_data['ip_sub_pool']['subnet']
-    ip_sub_pool_gateway = project_data['ip_sub_pool']['gateway']
-    ip_sub_pool_dhcp_server = project_data['ip_sub_pool']['dhcp_server']
-    ip_sub_pool_dns_server = project_data['ip_sub_pool']['dns_server']
-    ip_sub_pool_address_space = project_data['ip_sub_pool']['address_family']
-
     ip_transit_pool_name = project_data['ip_transit_pool']['name']
     ip_transit_pool_type = project_data['ip_transit_pool']['type']
     ip_transit_pool_cidr = project_data['ip_transit_pool']['subnet']
@@ -147,32 +139,48 @@ def main():
     time_sleep(10)
 
 
-    # # create an IP sub_pool for site_hierarchy
-    # ip_sub_pool_subnet = ip_sub_pool_cidr.split('/')[0]
-    # ip_sub_pool_mask = int(ip_sub_pool_cidr.split('/')[1])
-    # print('\n\nCreating the IP subpool: ', ip_pool_cidr)
-    # sub_pool_payload = {
-    #     'name': ip_sub_pool_name,
-    #     'type': ip_sub_pool_type,
-    #     'ipv4GlobalPool': ip_pool_cidr,
-    #     'ipv4Prefix': True,
-    #     'ipv6AddressSpace': False,
-    #     'ipv4PrefixLength': ip_sub_pool_mask,
-    #     'ipv4Subnet': ip_sub_pool_subnet,
-    #     'ipv4GateWay': ip_sub_pool_gateway,
-    #     'ipv4DhcpServers': [
-    #         ip_sub_pool_dhcp_server
-    #         ],
-    #     'ipv4DnsServers': [
-    #         ip_sub_pool_dns_server
-    #         ],
-    #     'ipv6Prefix': True,
-    #     'ipv6GlobalPool': '2001:2021::1000/64',
-    #     'ipv6PrefixLength': 96,
-    #     'ipv6Subnet': '2001:2021::1000'
-    #     }
-    # response = dnac_api.network_settings.reserve_ip_subpool(site_id=site_id, payload=sub_pool_payload)
-    # time_sleep(10)
+    for pool in project_data['ip_sub_pool']:
+
+
+
+        ip_sub_pool_name = pool['name']
+        ip_sub_pool_type = pool['type']
+        ip_sub_pool_cidr = pool['subnet']
+        ip_sub_pool_gateway = pool['gateway']
+        ip_sub_pool_dhcp_server1 = pool['dhcp_server1']
+        ip_sub_pool_dhcp_server2 = pool['dhcp_server2']
+        ip_sub_pool_dns_server1 = pool['dns_server1']
+        ip_sub_pool_dns_server2 = pool['dns_server2']
+        ip_sub_pool_address_space = pool['address_family']
+    
+        # create an IP sub_pool for site_hierarchy
+        ip_sub_pool_subnet = ip_sub_pool_cidr.split('/')[0]
+        ip_sub_pool_mask = int(ip_sub_pool_cidr.split('/')[1])
+        print('\n\nCreating the IP subpool: ', ip_pool_cidr)
+        sub_pool_payload = {
+            'name': ip_sub_pool_name,
+            'type': ip_sub_pool_type,
+            'ipv4GlobalPool': ip_pool_cidr,
+            'ipv4Prefix': True,
+            'ipv6AddressSpace': False,
+            'ipv4PrefixLength': ip_sub_pool_mask,
+            'ipv4Subnet': ip_sub_pool_subnet,
+            'ipv4GateWay': ip_sub_pool_gateway,
+            'ipv4DhcpServers': [
+                ip_sub_pool_dhcp_server1, ip_sub_pool_dhcp_server2
+                ],
+            'ipv4DnsServers': [
+                ip_sub_pool_dns_server1, ip_sub_pool_dns_server2
+                ]
+            }
+        # get the site_id
+        area_name = pool['area']
+        building_name = pool['building']
+        site_hierarchy = 'Global/' + area_name + '/' + building_name
+        response = dnac_api.sites.get_site(name=site_hierarchy)
+        site_id = response['response'][0]['id']
+        response = dnac_api.network_settings.reserve_ip_subpool(site_id=site_id, payload=sub_pool_payload)
+        time_sleep(10)
 
     # # create an IP transit pool for site_hierarchy
     # print('\n\nCreating the IP transit pool: ', ip_transit_pool_cidr)
@@ -202,13 +210,13 @@ def main():
 
 
 
-    # # get the site_id
-    # print('\n\nConfiguring Network Settings:')
-    # pprint(project_data['network_settings'])
-    # response = dnac_api.sites.get_site(name=site_hierarchy)
-    # site_id = response['response'][0]['id']
-    # response = dnac_api.network_settings.create_network(site_id=site_id, payload=network_settings_payload)
-    # time_sleep(10)
+    # get the site_id
+    print('\n\nConfiguring Network Settings:')
+    pprint(project_data['network_settings'])
+    response = dnac_api.sites.get_site(name=site_hierarchy)
+    site_id = response['response'][0]['id']
+    response = dnac_api.network_settings.create_network(site_id=site_id, payload=network_settings_payload)
+    time_sleep(10)
 
 if __name__ == '__main__':
     sys.exit(main())
