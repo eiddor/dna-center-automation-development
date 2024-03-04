@@ -114,12 +114,12 @@ def main():
     ip_pool_cidr = project_data['ip_pool']['subnet']
     ip_pool_address_space = project_data['ip_pool']['address_family']
 
-    ip_transit_pool_name = project_data['ip_transit_pool']['name']
-    ip_transit_pool_type = project_data['ip_transit_pool']['type']
-    ip_transit_pool_cidr = project_data['ip_transit_pool']['subnet']
-    ip_transit_pool_gateway = project_data['ip_transit_pool']['gateway']
-    ip_transit_pool_dhcp_server = project_data['ip_transit_pool']['dhcp_server']
-    ip_transit_pool_address_space = project_data['ip_transit_pool']['address_family']
+    # ip_transit_pool_name = project_data['ip_transit_pool']['name']
+    # ip_transit_pool_type = project_data['ip_transit_pool']['type']
+    # ip_transit_pool_cidr = project_data['ip_transit_pool']['subnet']
+    # ip_transit_pool_gateway = project_data['ip_transit_pool']['gateway']
+    # ip_transit_pool_dhcp_server = project_data['ip_transit_pool']['dhcp_server']
+    # ip_transit_pool_address_space = project_data['ip_transit_pool']['address_family']
 
     # create a new Global Pool
     print('\n\nCreating the Global Pool: ', ip_pool_name)
