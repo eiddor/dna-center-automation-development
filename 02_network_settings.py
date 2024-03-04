@@ -116,6 +116,8 @@ def main():
     syslog_server = project_data['network_settings']['syslog_server']
     ntp_server = project_data['network_settings']['ntp_server']
     aaa_server = project_data['network_settings']['aaa_server']
+    
+    site_hierarchy = 'Global/' + area_name + '/' + building_name + '/' + floor_name
 
 
     # create site network settings
