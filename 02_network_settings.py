@@ -117,7 +117,9 @@ def main():
     ntp_server = project_data['network_settings']['ntp_server']
     aaa_server = project_data['network_settings']['aaa_server']
     
-    site_hierarchy = 'Global/' + area_name + '/' + building_name + '/' + floor_name
+    # We only care about global right now
+
+    site_hierarchy = 'Global/'
 
 
     # create site network settings
