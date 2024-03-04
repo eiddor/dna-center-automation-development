@@ -112,9 +112,6 @@ def main():
     ip_pool_name = project_data['ip_pool']['name']
     ip_pool_type = project_data['ip_pool']['type']
     ip_pool_cidr = project_data['ip_pool']['subnet']
-    ip_pool_gateway = project_data['ip_pool']['gateway']
-    ip_pool_dhcp_server = project_data['ip_pool']['dhcp_server']
-    ip_pool_dns_server = project_data['ip_pool']['dns_server']
     ip_pool_address_space = project_data['ip_pool']['address_family']
 
     ip_sub_pool_name = project_data['ip_sub_pool']['name']
