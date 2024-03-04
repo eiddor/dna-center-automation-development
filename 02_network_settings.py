@@ -94,7 +94,7 @@ def main():
         datefmt='%Y-%m-%d %H:%M:%S')
 
     current_time = str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-    print('\nCreate Site Hierarchy start, ', current_time)
+    print('\nConfigure Network Settings script start, ', current_time)
 
     with open('site_info.yaml', 'r') as file:
         project_data = yaml.safe_load(file)
@@ -108,64 +108,35 @@ def main():
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
 
-# iterate through the list of areas and create them using the information in site_info.yaml
-    for name in project_data['area_info']:
-                # create a new area
-                print('\nCreating a new area:', name['name'])
-                area_payload = {
-                    "type": "area",
-                    "site": {
-                        "area": {
-                            "name": name['name'],
-                            "parentName": name['hierarchy']
-                        }
-                    }
-                }
-                response = dnac_api.sites.create_site(payload=area_payload)
-                time_sleep(10)
+    # create site network settings
+    network_settings_payload = {
+        'settings': {
+            'dhcpServer': [
+                dhcp_server
+            ],
+            'dnsServer': {
+                'domainName': '',
+                'primaryIpAddress': dns_server,
+            },
+            'syslogServer': {
+                'ipAddresses': [
+                    syslog_server
+                ],
+                'configureDnacIP': True
+            },
+            'ntpServer': [
+                ntp_server
+            ]
+        }
+    }
 
-
-# iterate through the list of buildings and create them using the information in site_info.yaml
-    for name in project_data['building_info']:
-                # create a new building
-                print('\n\nCreating a new building:', name['name'])
-                building_payload = {
-                    'type': 'building',
-                    'site': {
-                        'building': {
-                            'name': name['name'],
-                            'parentName': 'Global/' + name['area'],
-                            'address': name['address'],
-                            'latitude': name['lat'],
-                            'longitude': name['long']
-                        }
-                    }
-                }
-                response = dnac_api.sites.create_site(payload=building_payload)
-                print(response.text)
-                time_sleep(10)
-
-# iterate through the list of floors and create them using the information in site_info.yaml
-    for name in project_data['floor_info']:
-                # create a new building
-                # create a new floor
-                print('\n\nCreating a new floor:', name['name'])
-                floor_payload = {
-                    'type': 'floor',
-                    'site': {
-                        'floor': {
-                            'name': name['name'],
-                            'parentName': 'Global/' + name['area'] + '/' + name['building'],
-                            'height': name['height'],
-                            'length': name['length'],
-                            'width': name['width'],
-                            'rfModel': name['rf_model']
-                        }
-                    }
-                }
-                response = dnac_api.sites.create_site(payload=floor_payload)
-                time_sleep(10)
-
+    # get the site_id
+    print('\n\nConfiguring Network Settings:')
+    pprint(project_data['network_settings'])
+    response = dnac_api.sites.get_site(name=site_hierarchy)
+    site_id = response['response'][0]['id']
+    response = dnac_api.network_settings.create_network(site_id=site_id, payload=network_settings_payload)
+    time_sleep(10)
 
 if __name__ == '__main__':
     sys.exit(main())
