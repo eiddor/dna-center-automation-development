@@ -140,9 +140,6 @@ def main():
 
 
     for pool in project_data['ip_sub_pool']:
-
-
-
         ip_sub_pool_name = pool['name']
         ip_sub_pool_type = pool['type']
         ip_sub_pool_cidr = pool['subnet']
@@ -156,7 +153,7 @@ def main():
         # create an IP sub_pool for site_hierarchy
         ip_sub_pool_subnet = ip_sub_pool_cidr.split('/')[0]
         ip_sub_pool_mask = int(ip_sub_pool_cidr.split('/')[1])
-        print('\n\nCreating the IP subpool: ', ip_pool_cidr)
+        print('\n\nCreating the IP subpool: ', ip_sub_pool_cidr)
         sub_pool_payload = {
             'name': ip_sub_pool_name,
             'type': ip_sub_pool_type,
