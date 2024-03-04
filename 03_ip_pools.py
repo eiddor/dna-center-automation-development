@@ -138,13 +138,6 @@ def main():
                     'ipPoolName': ip_pool_name,
                     'type': ip_pool_type,
                     'ipPoolCidr': ip_pool_cidr,
-                    'gateway': ip_pool_gateway,
-                    'dhcpServerIps': [
-                        ip_pool_dhcp_server
-                        ],
-                    'dnsServerIps': [
-                        ip_pool_dns_server
-                        ],
                     'IpAddressSpace': ip_pool_address_space
                 }
             ]
