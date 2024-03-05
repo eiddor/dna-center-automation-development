@@ -190,7 +190,7 @@ def main():
             'ipv4Prefix': True,
             'ipv6AddressSpace': False,
             'ipv4PrefixLength': ip_lan_pool_mask,
-            'ipv4Subnet': ip_lan_pool_subnet,
+            'ipv4Subnet': ip_lan_pool_subnet
             }
         # get the site_id
         area_name = lan_pool['area']
