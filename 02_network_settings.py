@@ -137,7 +137,7 @@ def main():
                 "servers": "Server type supported by ISE and AAA",
                 "ipAddress": aaa_server,
                 "network": aaa_server,
-                "protocol": "RADIUS",
+                "protocol": "TACACS",
                 "servers": "ISE"
             },
             "clientAndEndpoint_aaa": {
