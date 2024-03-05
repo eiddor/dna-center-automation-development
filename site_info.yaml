@@ -1,8 +1,6 @@
 area_info:
   - name: Bay Area
     hierarchy: Global
-  - name: RTP
-    hierarchy: Global
 
 building_info:
   - name: San_Francisco-1
