@@ -1,25 +1,20 @@
-# Cisco DNA Center SDA-as-Code
-Repo for Cisco DNA Center Software Defined Access (SDA) operation
+# Cisco ~~DNA~~ Catalyst Center Basic Automation
+I've created this repo to help me setup a basic config on Cisco Catalyst Center for my lab environment.
 
-This repo is for an application that will use Cisco DNA Center REST APIs to:
+It's similar to this: https://github.com/eiddor/ise-automation-python
 
-- create a new area, building, and floor
-- create network settings
-- add devices to inventory 
-- assign devices to site
-- provision the devices to the new defined floor
-- create new Global pool, Fabric subpool and Transit subpool
-- build a new fabric at the site
-- define a new L3 VN
-- create host onboarding auth profile
-- add control-plane node
-- add border-node
-- add edge-node
+Original repo is here: https://github.com/cisco-en-programmability/dnacenter_fabric_operations
+
+This repo uses Cisco Catalyst Center REST APIs to:
+
+- create a new area, buildings, and floors
+- populate network settings
+- create new Global pool, Reserve subpools and LAN pools for LAN Automation and SDA Transit
 
 
 **Cisco Products & Services:**
 
-- Cisco DNA Center
+- Cisco Catalyst Center
 
 **Tools & Frameworks:**
 
