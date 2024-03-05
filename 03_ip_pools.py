@@ -199,8 +199,7 @@ def main():
         response = dnac_api.sites.get_site(name=site_hierarchy)
         site_id = response['response'][0]['id']
         response = dnac_api.network_settings.reserve_ip_subpool(site_id=site_id, payload=lan_pool_payload)
-        print(site_id)
-        pprint(lan_pool_payload)
+        print(response)
         time_sleep(10)
 
 if __name__ == '__main__':
