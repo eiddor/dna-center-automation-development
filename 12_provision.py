@@ -99,6 +99,25 @@ def provision_device(device_ip, site_hierarchy, dnac_token):
     response_json = response.json()
     return response_json
 
+def re_provision_device(device_ip, site_hierarchy, dnac_token):
+    """
+    This function will provision a network device to a site
+    :param device_ip: device management IP address
+    :param site_hierarchy: site hierarchy, for example {Global/OR/PDX-1/Floor-2}
+    :param dnac_token: Cisco DNA Center auth token
+    :return: response, in JSON
+    """
+    payload = {
+        'deviceManagementIpAddress': device_ip,
+        'siteNameHierarchy': site_hierarchy
+    }
+    url = DNAC_URL + '/dna/intent/api/v1/business/sda/provision-device'
+    header = {'content-type': 'application/json', 'x-auth-token': dnac_token}
+    response = requests.put(url, data=json.dumps(payload), headers=header, verify=False)
+    response_json = response.json()
+    return response_json
+    
+
 def main():
     """
     This script will create a new fabric at the site specified in the param provided.
@@ -148,7 +167,7 @@ def main():
     # provision devices
     print('\n\nProvisioning devices to site:', site_hierarchy)
     try:
-        response = provision_device(management_ip, site_hierarchy, dnac_auth)
+        response = re_provision_device(management_ip, site_hierarchy, dnac_auth)
         pprint(response)
     except requests.exceptions.RequestException as e:
         print("request error: " + e)
