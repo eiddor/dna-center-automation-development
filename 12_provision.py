@@ -139,8 +139,8 @@ def main():
 
     # provision devices
     print('\n\nProvisioning devices to site:', site_hierarchy)
-    for ip_address in device_ips:
-        response = provision_device(management_ip, site_hierarchy, dnac_auth)
+    response = provision_device(management_ip, site_hierarchy, dnac_auth)
+    pprint(response)
     time_sleep(120)
 
 if __name__ == '__main__':
