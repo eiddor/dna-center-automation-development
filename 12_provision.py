@@ -128,7 +128,7 @@ def main():
 
     # get the Management IP Address
     print('\n\nGetting Management IP Address:')
-    hostmask = 'sjc-edge.*'
+    hostmask = 'sjc-cp-border.*'
     response = dnac_api.devices.get_device_list(hostname=hostmask)
     management_ip = response.response[0].managementIpAddress
     pprint(hostmask)
