@@ -128,21 +128,20 @@ def main():
 
     # get the Management IP Address
     print('\n\nGetting Management IP Address:')
-    hostmask = 'sjc-cp-border*'
+    hostmask = 'sjc-cp-border.*'
     response = dnac_api.devices.get_device_list(hostname=hostmask)
-    # management_ip = response['response'][0]['managementIpAddress']
-    management_ip = response
+    management_ip = response.response[0].managementIpAddress
     pprint(hostmask)
     pprint(management_ip)
     time_sleep(10)
 
-    # # provision devices
-    # print('\n\nProvisioning devices to site:', site_hierarchy)
-    # for ip_address in device_ips:
-    #     response = provision_device(ip_address, site_hierarchy, dnac_auth)
-    # time_sleep(120)
+    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-2'
 
-
+    # provision devices
+    print('\n\nProvisioning devices to site:', site_hierarchy)
+    for ip_address in device_ips:
+        response = provision_device(management_ip, site_hierarchy, dnac_auth)
+    time_sleep(120)
 
 if __name__ == '__main__':
     sys.exit(main())
