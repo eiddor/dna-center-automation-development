@@ -128,14 +128,14 @@ def main():
 
     # get the Management IP Address
     print('\n\nGetting Management IP Address:')
-    hostmask = 'sjc-cp-border.*'
+    hostmask = 'sjc-edge.*'
     response = dnac_api.devices.get_device_list(hostname=hostmask)
     management_ip = response.response[0].managementIpAddress
     pprint(hostmask)
     pprint(management_ip)
     time_sleep(10)
 
-    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-2'
+    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-1'
     #site_hierarchy = 'San_Jose-13' + '/' + 'SJC-13-2'
 
     # provision devices
