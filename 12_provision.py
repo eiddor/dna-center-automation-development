@@ -135,8 +135,8 @@ def main():
     pprint(management_ip)
     time_sleep(10)
 
-    #site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-2'
-    site_hierarchy = 'San_Jose-13' + '/' + 'SJC-13-2'
+    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-2'
+    #site_hierarchy = 'San_Jose-13' + '/' + 'SJC-13-2'
 
     # provision devices
     print('\n\nProvisioning devices to site:', site_hierarchy)
@@ -153,7 +153,7 @@ def main():
     except requests.exceptions.RequestException as e:
         print("request error: " + e)
  
-    time_sleep(120)
+    time_sleep(20)
 
 if __name__ == '__main__':
     sys.exit(main())
