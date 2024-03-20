@@ -154,7 +154,7 @@ def main():
     pprint(management_ip)
     time_sleep(10)
 
-    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-1'
+    site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-2'
     #site_hierarchy = 'San_Jose-13' + '/' + 'SJC-13-2'
 
     # # provision devices
@@ -167,7 +167,7 @@ def main():
     # provision devices
     print('\n\nProvisioning devices to site:', site_hierarchy)
     try:
-        response = re_provision_device(management_ip, site_hierarchy, dnac_auth)
+        response = provision_device(management_ip, site_hierarchy, dnac_auth)
         pprint(response)
     except requests.exceptions.RequestException as e:
         print("request error: " + e)
