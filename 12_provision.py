@@ -138,11 +138,11 @@ def main():
     site_hierarchy = 'Global/' + 'Bay Area' + '/' + 'San_Jose-13' + '/' + 'SJC-13-1'
     #site_hierarchy = 'San_Jose-13' + '/' + 'SJC-13-2'
 
-    # provision devices
-    print('\n\nProvisioning devices to site:', site_hierarchy)
-    response = provision_device(management_ip, site_hierarchy, dnac_auth)
-    pprint(response)
-    time_sleep(120)
+    # # provision devices
+    # print('\n\nProvisioning devices to site:', site_hierarchy)
+    # response = provision_device(management_ip, site_hierarchy, dnac_auth)
+    # pprint(response)
+    # time_sleep(120)
 
 
     # provision devices
