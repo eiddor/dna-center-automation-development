@@ -159,7 +159,11 @@ def main():
     time_sleep(10)
 
     response = dnac_api.network_settings.get_device_credential_details()
-    pprint (response)
+    pprint('\n\n', response)
+    
+    test_crap = [x['cli.id'] for x in response if x['cli.description'] =='netadmin']
+    
+    pprint('The id is:', test_crap)
 
 if __name__ == '__main__':
     sys.exit(main())
