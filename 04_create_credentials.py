@@ -97,7 +97,7 @@ def main():
     print('\nConfigure Network Settings script start, ', current_time)
 
     # Create a DNACenterAPI "Connection Object"
-    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.2.3.3', verify=False)
+    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.3.5.3', verify=False)
 
     # get Cisco DNA Center Auth token
     dnac_auth = get_dnac_token(DNAC_AUTH)
@@ -140,7 +140,7 @@ def main():
             }
         ]
     }
-    response = dnac_api.network_discovery.create_global_credentials_v2(payload=global_credentials_payload)
+    response = dnac_api.discovery.create_global_credentials_v2(payload=global_credentials_payload)
     time_sleep(10)
 
 if __name__ == '__main__':
