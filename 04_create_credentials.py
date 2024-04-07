@@ -140,7 +140,7 @@ def main():
             }
         ]
     }
-    response = dnac_api.discovery.create_global_credentials_v2(payload=global_credentials_payload)
+    response = dnac_api.network_discovery.create_global_credentials_v2(payload=global_credentials_payload)
     time_sleep(10)
 
 if __name__ == '__main__':
