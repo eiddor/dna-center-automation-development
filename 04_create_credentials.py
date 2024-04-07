@@ -96,6 +96,12 @@ def main():
     current_time = str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     print('\nConfigure Network Settings script start, ', current_time)
 
+    # Create a DNACenterAPI "Connection Object"
+    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.2.3.3', verify=False)
+
+    # get Cisco DNA Center Auth token
+    dnac_auth = get_dnac_token(DNAC_AUTH)
+
     with open('site_info.yaml', 'r') as file:
         project_data = yaml.safe_load(file)
 
@@ -136,14 +142,6 @@ def main():
     }
     response = dnac_api.network_settings.create_global_credentials_v2(payload=global_credentials_payload)
     time_sleep(10)
-
-    # Create a DNACenterAPI "Connection Object"
-    dnac_api = DNACenterAPI(username=DNAC_USER, password=DNAC_PASS, base_url=DNAC_URL, version='2.2.3.3', verify=False)
-
-    # get Cisco DNA Center Auth token
-    dnac_auth = get_dnac_token(DNAC_AUTH)
-
-
 
 if __name__ == '__main__':
     sys.exit(main())
