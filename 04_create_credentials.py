@@ -133,7 +133,7 @@ def main():
                 'writeCommunity': snmp_rw
             }
         ],
-            'snmpV2cRead': [
+        'snmpV2cRead': [
             {
                 'description': 'ro',
                 'writeCommunity': snmp_ro
