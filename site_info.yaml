@@ -169,3 +169,13 @@ ip_lan_pool:
     type: LAN
     subnet: 100.124.128.0/25
     address_family: IPv4
+
+cli_credentials:
+  username: netadmin
+  password: C1sco12345
+
+snmp_rw:
+  string: rw
+
+snmp_ro:
+  string: ro
