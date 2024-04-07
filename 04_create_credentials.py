@@ -150,21 +150,20 @@ def main():
     # Assign credentials
     print('\n\nAssigning Credentials to site: ', site_id)
 
+    response = dnac_api.network_settings.get_device_credential_details() 
+    cli_id = [x['id'] for x in response.cli if x['description'] =='netadmin'][0]
+    snmp_rw_id = [x['id'] for x in response.snmp_v2_write if x['description'] =='rw'][0]
+    snmp_ro_id = [x['id'] for x in response.snmp_v2_read if x['description'] =='ro'][0]
+
     site_assign_payload = {
-        'cliId': 'netadmin',
-        'snmpV2WriteId': 'rw',
-        'snmpV2ReadId': 'ro'
+        'cliId': cli_id,
+        'snmpV2WriteId': snmp_rw_id,
+        'snmpV2ReadId': snmp_ro_id
     }
+    
     response = dnac_api.network_settings.assign_device_credential_to_site(site_id=site_id,payload=site_assign_payload)   
     time_sleep(10)
 
-    response = dnac_api.network_settings.get_device_credential_details()
-    print('\n\n')
-    pprint(response)
-  
-    test_crap = [x['cli.id'] for x in response[0] if x['cli.description'] =='netadmin']
-    print('\n\n')
-    pprint('The id is:', test_crap)
 
 if __name__ == '__main__':
     sys.exit(main())
