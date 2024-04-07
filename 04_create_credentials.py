@@ -151,12 +151,11 @@ def main():
     print('\n\nAssigning Credentials to site: ', site_id)
 
     site_assign_payload = {
-        'site_id': site_id,
         'cliId': 'netadmin',
         'snmpV2WriteId': 'rw',
         'snmpV2ReadId': 'ro'
     }
-    response = dnac_api.network_settings.assign_device_credential_to_site(payload=site_assign_payload)   
+    response = dnac_api.network_settings.assign_device_credential_to_site(site_id=site_id,payload=site_assign_payload)   
 
 if __name__ == '__main__':
     sys.exit(main())
