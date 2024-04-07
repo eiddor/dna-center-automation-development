@@ -156,6 +156,10 @@ def main():
         'snmpV2ReadId': 'ro'
     }
     response = dnac_api.network_settings.assign_device_credential_to_site(site_id=site_id,payload=site_assign_payload)   
+    time_sleep(10)
+
+    response = dnac_api.network_settings.get_device_credential_details()
+    pprint response
 
 if __name__ == '__main__':
     sys.exit(main())
