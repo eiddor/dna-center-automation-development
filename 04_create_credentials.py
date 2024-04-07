@@ -162,7 +162,7 @@ def main():
     print('\n\n')
     pprint(response)
   
-    test_crap = [x['cli.id'] for x in response if x['cli.description'] =='netadmin']
+    test_crap = [x['cli.id'] for x in response[0] if x['cli.description'] =='netadmin']
     print('\n\n')
     pprint('The id is:', test_crap)
 
