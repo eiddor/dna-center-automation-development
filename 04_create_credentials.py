@@ -159,7 +159,7 @@ def main():
     time_sleep(10)
 
     response = dnac_api.network_settings.get_device_credential_details()
-    pprint response
+    pprint (response)
 
 if __name__ == '__main__':
     sys.exit(main())
