@@ -122,7 +122,7 @@ def main():
                     }
                 }
                 response = dnac_api.sites.create_site(payload=area_payload)
-                time_sleep(10)
+                time_sleep(30)
 
 
 # iterate through the list of buildings and create them using the information in site_info.yaml
