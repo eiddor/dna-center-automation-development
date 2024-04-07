@@ -136,7 +136,7 @@ def main():
         'snmpV2cRead': [
             {
                 'description': 'ro',
-                'writeCommunity': snmp_ro
+                'readCommunity': snmp_ro
             }
         ]
     }
