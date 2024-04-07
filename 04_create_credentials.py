@@ -143,7 +143,7 @@ def main():
     response = dnac_api.discovery.create_global_credentials_v2(payload=global_credentials_payload)
     time_sleep(10)
 
-    site_hierarchy = 'Global/'
+    site_hierarchy = 'Global'
     response = dnac_api.sites.get_site(name=site_hierarchy)
     site_id = response['response'][0]['id']
     
